@@ -40,7 +40,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2.5px;
+    gap: 25px;
     padding: 10px;
 }
 
@@ -48,16 +48,18 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 350px;
-    width: 250px;
     background-color: #FB6c6c;
     color: white;
-    padding: 24px;
+    padding: 15px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#pokedex-card:hover {
+    transform: scale(1.1);
 }
 
 #pokemon-img {
     height: 150px;
     width: 150px;
-    object-fit: cover;
 }
