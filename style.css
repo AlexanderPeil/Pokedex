@@ -48,11 +48,11 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FB6c6c;
     color: white;
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
+    transition: all 125ms ease-in-out;
 }
 
 #pokedex-card:hover {
@@ -62,4 +62,16 @@ nav {
 #pokemon-img {
     height: 150px;
     width: 150px;
+}
+
+.d-none {
+    display: none;
+}
+
+#pokemon-info-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }

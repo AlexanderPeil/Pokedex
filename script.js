@@ -4,7 +4,7 @@ let pokemonName;
 let pokemonImage;
 let pokemonType;
 let pokemonColor;
-let pokemonAmount = 100;
+let pokemonAmount = 50;
 let startPokemon = 1;
 
 
@@ -15,11 +15,11 @@ async function loadPokemon() {
         currentPokemon = await response.json();
         allPokemon.push(currentPokemon);
     }
-    pokemonInfo();
+    showAllPokemon();
 }
 
 
-function pokemonInfo() {
+function showAllPokemon() {
     let container = document.getElementById('main-container');
     container.innerHTML = '';
     for (let i = 0; i < allPokemon.length; i++) {
@@ -30,13 +30,13 @@ function pokemonInfo() {
         pokemonType = pokemon['types'][0]['type']['name'];
         pokemonTypeColor();
 
-        container.innerHTML += renderPokemonInfo();
+        container.innerHTML += renderShowAllPokemon(i);
     }
 }
 
-function renderPokemonInfo() {
+function renderShowAllPokemon(i) {
     return /*html*/ `
-    <div id="pokedex-card" style="background-color: ${pokemonColor};">
+    <div id="pokedex-card" style="background-color: ${pokemonColor};" onclick="pokemonInfo(${i})">
          <div>
              <h2>${pokemonName}</h2>
          </div>
@@ -48,6 +48,21 @@ function renderPokemonInfo() {
          </div>
     </div>
     `;
+}
+
+
+function pokemonInfo(i) {
+    let pokemonInfoContent = document.getElementById('pokemon-info-container');
+    // pokemonInfoContent.classList.remove('d-none');
+    let name = allPokemon[i]['name'];
+    let type = allPokemon[i]['types'][0]['type']['name'];
+    let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i}.svg`;
+    pokemonInfoContent.innerHTML += renderPokemonInfo(i, name, type, img);
+}
+
+
+function renderPokemonInfo(i, name, type, img) {
+    
 }
 
 
