@@ -53,16 +53,30 @@ function renderShowAllPokemon(i) {
 
 function pokemonInfo(i) {
     let pokemonInfoContent = document.getElementById('pokemon-info-container');
-    // pokemonInfoContent.classList.remove('d-none');
+    pokemonInfoContent.classList.remove('d-none');
     let name = allPokemon[i]['name'];
     let type = allPokemon[i]['types'][0]['type']['name'];
-    let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i}.svg`;
+    let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
     pokemonInfoContent.innerHTML += renderPokemonInfo(i, name, type, img);
 }
 
 
 function renderPokemonInfo(i, name, type, img) {
-    
+    return /*html*/ `
+    <div style="background-color: ${pokemonColor};">
+        <h2>${name}</h2>
+        <img src="img/xicon.png" onclick="closePokemonInfo()">
+    </div>
+        <h3>${type}</h3>
+    <div>
+        <img src="${img}">
+    </div>
+    `;
+}
+
+
+function closePokemonInfo() {
+    document.getElementById('pokemon-info-containe').classList.add('d-none');
 }
 
 
