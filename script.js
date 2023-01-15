@@ -41,7 +41,7 @@ function renderShowAllPokemon(i) {
              <h2>${pokemonName}</h2>
          </div>
          <div>
-             <img id="pokemon-img" src="${pokemonImage}">
+             <img id="pokemon-img" class="pokemon-img" src="${pokemonImage}">
          </div>
          <div>
             <h2>${pokemonType}</h2>
@@ -54,29 +54,36 @@ function renderShowAllPokemon(i) {
 function pokemonInfo(i) {
     let pokemonInfoContent = document.getElementById('pokemon-info-container');
     pokemonInfoContent.classList.remove('d-none');
+    document.body.classList.add('hidden');
     let name = allPokemon[i]['name'];
     let type = allPokemon[i]['types'][0]['type']['name'];
     let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
+    pokemonTypeColor();
+    pokemonInfoContent.innerHTML = '';
     pokemonInfoContent.innerHTML += renderPokemonInfo(i, name, type, img);
 }
 
 
 function renderPokemonInfo(i, name, type, img) {
     return /*html*/ `
-    <div style="background-color: ${pokemonColor};">
-        <h2>${name}</h2>
-        <img src="img/xicon.png" onclick="closePokemonInfo()">
+    <div id="info-container" style="background-color: ${pokemonColor};">
+    <div class="close-icon">
+        <img src="img/close-icon.png" onclick="closePokemonInfo()">
     </div>
+    <div class="pokemon-name-type">
+        <h2>${name}</h2>    
         <h3>${type}</h3>
-    <div>
-        <img src="${img}">
+    </div>
+        <img class="pokemon-img" src="${img}">
+    </div>
     </div>
     `;
 }
 
 
 function closePokemonInfo() {
-    document.getElementById('pokemon-info-containe').classList.add('d-none');
+    document.getElementById('pokemon-info-container').classList.add('d-none');
+    document.body.classList.remove('hidden');
 }
 
 

@@ -59,7 +59,7 @@ nav {
     transform: scale(1.1);
 }
 
-#pokemon-img {
+.pokemon-img {
     height: 150px;
     width: 150px;
 }
@@ -68,15 +68,50 @@ nav {
     display: none;
 }
 
+.hidden {
+    overflow: hidden;
+}
+
 #pokemon-info-container {
     position: fixed;
-    top: 0;
+    top: 250px;
     left: 0;
     right: 0;
     z-index: 999;    
+    display: flex;
+    justify-content: center;
 }
 
 #img {
     height: 150px;
     width: 150px;
+}
+
+.close-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+}
+
+.close-icon img {
+    cursor: pointer;
+    height: 35px;
+}
+
+#info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    height: 400px;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+}
+
+.pokemon-name-type {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 300px;
 }
