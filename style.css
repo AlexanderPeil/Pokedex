@@ -5,6 +5,8 @@ body {
 }
 
 nav {
+    position: sticky;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -41,7 +43,7 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    padding: 10px;
+    padding: 25px 10px 10px 10px;
 }
 
 #pokedex-card {
