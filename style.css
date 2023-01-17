@@ -4,6 +4,13 @@ body {
     background-color: black;
 }
 
+#bg-dark {
+    opacity: 0.8;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
 nav {
     position: sticky;
     top: 0;
@@ -76,12 +83,29 @@ nav {
 
 #pokemon-info-container {
     position: fixed;
-    top: 250px;
+    top: 185px;
     left: 0;
     right: 0;
     z-index: 999;    
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pokemon-stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background-color: white;
+    width: 350px;
+    margin-top: -20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#pokemon-stats div {
+    justify-content: space-between;
 }
 
 #img {

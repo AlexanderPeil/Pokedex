@@ -19,7 +19,9 @@
 
 <body onload="loadPokemon()">
 
-    <nav class="bg-dark">
+    <img src="img/dark-bg.png" id="bg-dark" class="d-none">
+
+    <nav class="bg-secondary">
         <div class="nav-content-left">
             <img src="img/favicon.png">
             <h1>Pokedex</h1>
@@ -30,11 +32,17 @@
         </div>
     </nav>
 
-    <div class="main-container bg-dark" id="main-container"> 
+
+    <div class="main-container bg-dark" id="main-container">
     </div>
 
-    <div id="pokemon-info-container" class="d-none">
+    <div id="pokemon-info-container">
+        <div id="pokemon-info-head" class="d-none">
+        </div>
+        <div id="pokemon-stats" class="d-none">
+        </div>
     </div>
+
 </body>
 
 </html>
