@@ -40,15 +40,15 @@ function renderShowAllPokemon(i) {
     return /*html*/ `
     <div id="pokedex-card" style="background-color: ${pokemonColor};" onclick="pokemonInfo(${i})">
          <div class="d-flex">
-            <h2 class="pokemon-id me-3">#${pokemonId}</h2>
-             <h2>${pokemonName}</h2>
+            <h2 class="pokemon-font-size me-3">#${pokemonId}</h2>
+             <h2 class="pokemon-font-size">${pokemonName}</h2>
          </div>
          <div>
-             <img id="pokemon-img" class="pokemon-img" src="${pokemonImage}">
+             <img id="pokemon-img" class="pokemon-img mt-1" src="${pokemonImage}">
          </div>
-         <div class="pokemon-type-id">
+         <div class="pokemon-type mt-3">
         <div>
-            <h2>${pokemonType}</h2>
+            <h2 class="pokemon-font-size fst-italic">${pokemonType}</h2>
         </div>
          </div>
     </div>
@@ -216,3 +216,19 @@ function pokemonTypeColor() {
 }
 
 const DEFAULT_POKEMON_COLOR = '#FFFFFFF';
+
+
+function filterPokemon() {
+    let search = document.getElementById('search-input').value;
+    search = search.toLowerCase();
+
+    let content = document.getElementById('main-container');
+    content.innerHTML = '';
+
+    for (let i = 0; i < currentPokemon; i++) {
+        let pokemon = allPokemon[i]['name'];
+        if (pokemon.toLowerCase().includes(search)) {
+            content.innerHTML += renderShowAllPokemon();
+        }
+    }
+}
