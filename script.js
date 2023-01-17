@@ -3,6 +3,7 @@ let currentPokemon;
 let pokemonName;
 let pokemonImage;
 let pokemonType;
+let pokemonId;
 let pokemonColor;
 let pokemonAmount = 50;
 let startPokemon = 1;
@@ -28,6 +29,7 @@ function showAllPokemon() {
         pokemonName = pokemon['name'];
         pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
         pokemonType = pokemon['types'][0]['type']['name'];
+        pokemonId = pokemon['id']
         pokemonTypeColor(pokemonColor);
 
         container.innerHTML += renderShowAllPokemon(i);
@@ -37,14 +39,17 @@ function showAllPokemon() {
 function renderShowAllPokemon(i) {
     return /*html*/ `
     <div id="pokedex-card" style="background-color: ${pokemonColor};" onclick="pokemonInfo(${i})">
-         <div>
+         <div class="d-flex">
+            <h2 class="pokemon-id me-3">#${pokemonId}</h2>
              <h2>${pokemonName}</h2>
          </div>
          <div>
              <img id="pokemon-img" class="pokemon-img" src="${pokemonImage}">
          </div>
-         <div>
+         <div class="pokemon-type-id">
+        <div>
             <h2>${pokemonType}</h2>
+        </div>
          </div>
     </div>
     `;
@@ -61,8 +66,8 @@ function pokemonInfo(i) {
     pokemonName = allPokemon[i]['name'];
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
-    
-    pokemonTypeColor(); 
+
+    pokemonTypeColor();
 
     pokemonInfoContent.innerHTML = renderPokemonInfo(i);
     pokemonStats(i);

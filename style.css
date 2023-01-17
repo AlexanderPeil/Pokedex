@@ -73,6 +73,17 @@ nav {
     width: 150px;
 }
 
+.pokemon-type {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+}
+
+.pokemon-type-id {
+    display: flex;
+    align-items: center;
+}
+
 .d-none {
     display: none;
 }
