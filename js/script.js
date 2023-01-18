@@ -59,25 +59,27 @@ function aboutPokemon(i) {
     let aboutPokemon = document.getElementById('about-pokemon');
     aboutPokemon.classList.remove('d-none');
 
-    let height = allPokemon[i]['height'];
-    let weight = allPokemon[i]['weight'];
-    let baseXp = allPokemon[i]['base-experience'];
+    let height = allPokemon[i]['height'] / 10;
+    let weight = allPokemon[i]['weight'] / 10;
+    let baseXp = allPokemon[i]['base_experience'];
     let abilitiyFirst = allPokemon[i]['abilities'][0]['ability']['name'];
     let abilitysSecond = allPokemon[i]['abilities'][1]['ability']['name'];
  
     aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSecond);
 }
 
-// const abilitiesAmount = allPokemon[i]['abilities'].length;
-// let abilities = '';
 
-// for (let j = 0; j < abilitiesAmount; j++) {
-//     abilities += allPokemon[i]['abilities'][j]['ability']['name'];
-//     if (j < abilitiesAmount - 1) {
-//         abilities += ',';
-//     }
-// }
-// return abilities;
+function getToAboutPokemon() {
+    document.getElementById('pokemon-stats').classList.add('d-none');
+
+    aboutPokemon();    
+}
+
+
+function getToPokemonStats() {
+    document.getElementById('about-pokemon').classList.add('d-none');
+}
+
 
 function pokemonStats(i) {
     let pokemonStats = document.getElementById('pokemon-stats');
@@ -92,6 +94,11 @@ function pokemonStats(i) {
 
     pokemonStats.innerHTML = renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed);
 }
+
+
+function pokemonMoves(i) {
+
+} 
 
 
 function closePokemonInfo() {

@@ -157,3 +157,20 @@ nav {
     flex-direction: column;
     width: 300px;
 }
+ 
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333333;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+li {
+    float: left;
+    color: white;
+    cursor: pointer;
+}

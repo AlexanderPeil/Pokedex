@@ -24,11 +24,11 @@ function renderPokemonInfo(i) {
          </div>
           <div class="pokemon-name-type">
               <div class="d-flex align-items-center">
-                 <h2 class="pokemon-font-size me-3">#${pokemonId}</h2>
+                 <h2 class="me-3">#${pokemonId}</h2>
                   <h2>${pokemonName}</h2>   
              </div>
-              <div class="pokemon-type pokemon-font-size"> 
-                <span>${pokemonType}</span>
+              <div class="pokemon-type fst-italic"> 
+                <span class="pokemon-font-size">${pokemonType}</span>
              </div>
           </div>
            <div class="mt-5">
@@ -42,23 +42,26 @@ function renderPokemonInfo(i) {
 
 function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSecond) {
     return /*html*/ `
-    <h3>About</h3>
+    <ul>
+        <li onclick="getToAboutPokemon()">About</li>
+        <li onclick="getToPokemonStats()">Stats</li>
+        <li onclick="getToPokemonMoves()">Moves</li>
+    </ul>
     <div class="d-flex justify-content-between mb-1">
         <span>Height</span>
-        <span>${height}</span>
+        <span>${height} m</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Weight</span>
-        <span>${weight}</span>
+        <span>${weight} kg</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Base XP</span>
-        <span>${baseXp}</span>
+        <span>${baseXp}&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Abilities</span>
-        <span>${abilitiyFirst},</span>
-        <span>${abilitysSecond}</span>
+        <span>${abilitiyFirst}, ${abilitysSecond}</span>
     </div>
     `;
 }
@@ -66,7 +69,11 @@ function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSe
 
 function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed) {
     return /*html*/ `
-    <h3>Stats</h3>
+    <ul>
+        <li onclick="aboutPokemon()">About</li>
+        <li onclick="pokemonStats()">Stats</li>
+        <li onclick="pokemonMoves()">Moves</li>
+    </ul>
     <div class="d-flex justify-content-between mb-1">
         <span>HP</span>
         <span>${hp}</span>
