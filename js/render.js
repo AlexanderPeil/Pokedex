@@ -43,9 +43,9 @@ function renderPokemonInfo(i) {
 function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSecond) {
     return /*html*/ `
     <ul>
-        <li onclick="getToAboutPokemon()">About</li>
-        <li onclick="getToPokemonStats()">Stats</li>
-        <li onclick="getToPokemonMoves()">Moves</li>
+        <li onclick="getToAboutPokemon(${i})">About</li>
+        <li onclick="getToPokemonStats(${i})">Stats</li>
+        <li onclick="getToPokemonMoves(${i})">Moves</li>
     </ul>
     <div class="d-flex justify-content-between mb-1">
         <span>Height</span>
@@ -57,7 +57,7 @@ function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSe
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Base XP</span>
-        <span>${baseXp}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span>${baseXp} xp;</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Abilities</span>
@@ -70,9 +70,9 @@ function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSe
 function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed) {
     return /*html*/ `
     <ul>
-        <li onclick="aboutPokemon()">About</li>
-        <li onclick="pokemonStats()">Stats</li>
-        <li onclick="pokemonMoves()">Moves</li>
+        <li onclick="getToAboutPokemon(${i})">About</li>
+        <li onclick="getToPokemonStats(${i})">Stats</li>
+        <li onclick="getToPokemonMoves(${i})">Moves</li>
     </ul>
     <div class="d-flex justify-content-between mb-1">
         <span>HP</span>
@@ -98,5 +98,12 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
         <span>Speed</span>
         <span>${speed}</span>
     </div>
+    `;
+}
+
+
+function renderPokemonMoves (i, move) {
+    return /*html*/ `
+    <span>${move}</span>
     `;
 }

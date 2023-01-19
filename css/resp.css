@@ -1,0 +1,15 @@
+@media(max-width: 600px) {
+    nav {
+        flex-direction: column;
+    }
+
+    .nav-content-left {
+        margin-left: unset;
+        margin-bottom: 5px;
+    }
+
+    .search-content {
+        margin-right: unset;
+        margin-bottom: 5px;
+    }
+}

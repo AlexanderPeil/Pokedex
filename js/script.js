@@ -5,7 +5,7 @@ let pokemonImage;
 let pokemonType;
 let pokemonId;
 let pokemonColor;
-let pokemonAmount = 50;
+let pokemonAmount = 49;
 let startPokemon = 1;
 
 
@@ -69,18 +69,6 @@ function aboutPokemon(i) {
 }
 
 
-function getToAboutPokemon() {
-    document.getElementById('pokemon-stats').classList.add('d-none');
-
-    aboutPokemon();    
-}
-
-
-function getToPokemonStats() {
-    document.getElementById('about-pokemon').classList.add('d-none');
-}
-
-
 function pokemonStats(i) {
     let pokemonStats = document.getElementById('pokemon-stats');
     pokemonStats.classList.remove('d-none');
@@ -93,18 +81,53 @@ function pokemonStats(i) {
     let speed = allPokemon[i]['stats'][5]['base_stat'];
 
     pokemonStats.innerHTML = renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed);
-}
+} 
 
 
 function pokemonMoves(i) {
+    let pokemonMoves = document.getElementById('pokemon-moves');
+    pokemonMoves.classList.remove('d-none');
 
-} 
+    let movesAmount = allPokemon[i]['moves'].length;
+
+    for (let j = 0; j < movesAmount; j++) {
+        const move = allPokemon[i]['moves'][j]['move']['name'];
+        pokemonMoves.innerHTML += renderPokemonMoves(i, move);
+    }
+}
+
+
+
+function getToAboutPokemon(i) {
+    document.getElementById('pokemon-stats').classList.add('d-none');
+    document.getElementById('pokemon-moves').classList.add('d-none');
+
+    aboutPokemon(i);    
+}
+
+
+function getToPokemonStats(i) {
+    document.getElementById('about-pokemon').classList.add('d-none');
+    document.getElementById('pokemon-moves').classList.add('d-none');
+
+    pokemonStats(i);
+}
+
+
+function getToPokemonMoves(i) {
+    document.getElementById('pokemon-stats').classList.add('d-none');
+    document.getElementById('about-pokemon').classList.add('d-none');
+
+    pokemonMoves(i);
+}
+
 
 
 function closePokemonInfo() {
     document.getElementById('pokemon-info-head').classList.add('d-none');
     document.getElementById('about-pokemon').classList.add('d-none');
     document.getElementById('pokemon-stats').classList.add('d-none');
+    document.getElementById('pokemon-moves').classList.add('d-none');
     document.body.classList.remove('hidden');
     document.getElementById('bg-dark').classList.add('d-none');
 }
