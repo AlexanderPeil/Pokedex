@@ -40,7 +40,7 @@ function renderPokemonInfo(i) {
 }
 
 
-function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSecond) {
+function renderAboutPokemon(i, height, weight, baseXp, ability) {
     return /*html*/ `
     <ul>
         <li onclick="getToAboutPokemon(${i})">About</li>
@@ -61,7 +61,8 @@ function renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSe
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Abilities</span>
-        <span>${abilitiyFirst}, ${abilitysSecond}</span>
+        <span>${ability}</span>
+        <span>${ability}</span>
     </div>
     `;
 }

@@ -29,7 +29,7 @@ function showAllPokemon() {
         pokemonName = pokemon['name'];
         pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
         pokemonType = pokemon['types'][0]['type']['name'];
-        pokemonId = pokemon['id']
+        pokemonId = pokemon['id'];
         pokemonTypeColor(pokemonColor);
 
         container.innerHTML += renderShowAllPokemon(i);
@@ -47,11 +47,13 @@ function pokemonInfo(i) {
     pokemonName = allPokemon[i]['name'];
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
-
+    pokemonId = allPokemon[i]['id'];
+   
     pokemonTypeColor();
 
     pokemonInfoContent.innerHTML = renderPokemonInfo(i);
     aboutPokemon(i);
+    keyControl(i);
 }
 
 
@@ -62,10 +64,13 @@ function aboutPokemon(i) {
     let height = allPokemon[i]['height'] / 10;
     let weight = allPokemon[i]['weight'] / 10;
     let baseXp = allPokemon[i]['base_experience'];
-    let abilitiyFirst = allPokemon[i]['abilities'][0]['ability']['name'];
-    let abilitysSecond = allPokemon[i]['abilities'][1]['ability']['name'];
- 
-    aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, abilitiyFirst, abilitysSecond);
+
+    let abilityAmount  = allPokemon[i]['abilities'].length;
+    for (let j = 0; j < abilityAmount; j++) {
+        const ability = allPokemon[i]['abilities'][j]['ability']['name'];
+        aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, ability);
+    }
+
 }
 
 
@@ -121,9 +126,8 @@ function getToPokemonMoves(i) {
     pokemonMoves(i);
 }
 
-
-
-function closePokemonInfo() {
+// Help function for Closing the pokemon info container. I use this one in two other functions down here.
+function closeFunction() {
     document.getElementById('pokemon-info-container').classList.add('d-none');
     document.getElementById('about-pokemon').classList.add('d-none');
     document.getElementById('pokemon-stats').classList.add('d-none');
@@ -133,18 +137,30 @@ function closePokemonInfo() {
 }
 
 
-function closeMenu() {
-    document.getElementById('pokemon-info-container').classList.add('d-none');
-    document.getElementById('about-pokemon').classList.add('d-none');
-    document.getElementById('pokemon-stats').classList.add('d-none');
-    document.getElementById('pokemon-moves').classList.add('d-none');
-    document.body.classList.remove('hidden');
-    document.getElementById('bg-dark').classList.add('d-none');
+function closePokemonInfo() {
+    closeFunction();
 }
 
 
 function dontClose(event) {
     event.stopPropagation();
+}
+
+
+function resetDisplay() {
+    document.getElementById('pokemon-stats').classList.add('d-none');
+    document.getElementById('pokemon-moves').classList.add('d-none');
+}
+
+
+function keyControl(i) {
+    document.onkeydown = (e) => {
+        if (e.key === 'Escape') {
+            closeFunction();
+        }
+        if (e.key === 'ArrowLeft') pokemonInfo(i - 1), resetDisplay();
+        if (e.key === 'ArrowRight') pokemonInfo(i + 1), resetDisplay()
+    }
 }
 
 
