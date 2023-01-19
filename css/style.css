@@ -177,3 +177,10 @@ li {
     color: white;
     cursor: pointer;
 }
+
+li:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    font-weight: 700;
+    transition: all 125ms ease-in-out;
+}

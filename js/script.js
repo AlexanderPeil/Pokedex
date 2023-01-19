@@ -135,6 +135,9 @@ function closePokemonInfo() {
 
 function closeMenu() {
     document.getElementById('pokemon-info-container').classList.add('d-none');
+    document.getElementById('about-pokemon').classList.add('d-none');
+    document.getElementById('pokemon-stats').classList.add('d-none');
+    document.getElementById('pokemon-moves').classList.add('d-none');
     document.body.classList.remove('hidden');
     document.getElementById('bg-dark').classList.add('d-none');
 }
