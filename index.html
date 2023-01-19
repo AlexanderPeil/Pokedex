@@ -22,7 +22,7 @@
 
 <body onload="loadPokemon()">
 
-    <img src="img/dark-bg.png" id="bg-dark" class="d-none">
+    <img src="img/dark-bg.png" id="bg-dark" class="d-none" onclick="closeMenu()">
 
     <nav class="bg-secondary">
         <div class="nav-content-left">
@@ -39,11 +39,11 @@
     <div class="main-container bg-dark" id="main-container">
     </div>
 
-    <div id="pokemon-info-container">
-        <div id="pokemon-info-head" class="d-none"></div>
-        <div id="about-pokemon" class="d-none pokemon-info"></div>
-        <div id="pokemon-stats" class="d-none pokemon-info"></div>
-        <div id="pokemon-moves" class="d-none pokemon-info"></div>
+    <div id="pokemon-info-container" class="d-none" onclick="closeMenu()">
+        <div id="pokemon-info-head" onclick="dontClose(event)"></div>
+        <div id="about-pokemon" class="d-none pokemon-info" onclick="dontClose(event)"></div>
+        <div id="pokemon-stats" class="d-none pokemon-info" onclick="dontClose(event)"></div>
+        <div id="pokemon-moves" class="d-none pokemon-info" onclick="dontClose(event)"></div>
     </div>
 
 </body>

@@ -38,8 +38,8 @@ function showAllPokemon() {
 
 
 function pokemonInfo(i) {
+    document.getElementById('pokemon-info-container').classList.remove('d-none');
     let pokemonInfoContent = document.getElementById('pokemon-info-head');
-    pokemonInfoContent.classList.remove('d-none');
     document.body.classList.add('hidden');
     document.getElementById('bg-dark').classList.remove('d-none');
 
@@ -124,12 +124,24 @@ function getToPokemonMoves(i) {
 
 
 function closePokemonInfo() {
-    document.getElementById('pokemon-info-head').classList.add('d-none');
+    document.getElementById('pokemon-info-container').classList.add('d-none');
     document.getElementById('about-pokemon').classList.add('d-none');
     document.getElementById('pokemon-stats').classList.add('d-none');
     document.getElementById('pokemon-moves').classList.add('d-none');
     document.body.classList.remove('hidden');
     document.getElementById('bg-dark').classList.add('d-none');
+}
+
+
+function closeMenu() {
+    document.getElementById('pokemon-info-container').classList.add('d-none');
+    document.body.classList.remove('hidden');
+    document.getElementById('bg-dark').classList.add('d-none');
+}
+
+
+function dontClose(event) {
+    event.stopPropagation();
 }
 
 
