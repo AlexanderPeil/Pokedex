@@ -109,9 +109,9 @@ function pokemonMoves(i) {
     let movesAmount = allPokemon[i]['moves'].length;
 
     for (let j = 0; j < movesAmount; j++) {
-        const move = allPokemon[i]['moves'][j]['move']['name'];
-        pokemonMoves.innerHTML += renderPokemonMoves(i, move);
-    }
+        const moves = allPokemon[i]['moves'][j]['move']['name'];
+        pokemonMoves.innerHTML += renderPokemonMoves(moves);
+    } 
 }
 
 
@@ -173,6 +173,9 @@ function keyControl(i) {
         }
         if (e.key === 'ArrowLeft') pokemonInfo(i - 1), resetDisplay();
         if (e.key === 'ArrowRight') pokemonInfo(i + 1), resetDisplay()
+        if (pokemonAmount == 49) {
+            loadPokemon();
+        }
     }
 }
 

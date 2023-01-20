@@ -103,3 +103,9 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
     `;
 }
 
+
+function renderPokemonMoves(moves) {
+    return /*html*/ `
+        <div class="pokemon-moves">${moves}</div>
+    `;
+}
