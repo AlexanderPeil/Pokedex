@@ -32,7 +32,9 @@ function renderPokemonInfo(i) {
              </div>
           </div>
            <div class="mt-5">
+              <!-- <img id="prev" class="arrow-img" src="./img/prev.png" onclick="prevPokemon(i)"> -->
               <img class="pokemon-img" src="${pokemonImage}">
+              <!-- <img id="next" class="arrow-img" src="./img/next.png" onclick="nextPokemon(i)"> -->
          </div>
       </div>
     </div>
@@ -61,7 +63,6 @@ function renderAboutPokemon(i, height, weight, baseXp, ability) {
     </div>
     <div class="d-flex justify-content-between mb-1">
         <span>Abilities</span>
-        <span>${ability}</span>
         <span>${ability}</span>
     </div>
     `;

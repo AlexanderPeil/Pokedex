@@ -5,6 +5,7 @@ let pokemonImage;
 let pokemonType;
 let pokemonId;
 let pokemonColor;
+let loadMorePokemon = false;
 let pokemonAmount = 49;
 let startPokemon = 1;
 
@@ -17,6 +18,8 @@ async function loadPokemon() {
         allPokemon.push(currentPokemon);
     }
     showAllPokemon();
+    startPokemon += 48;
+    pokemonAmount += 48;
 }
 
 
@@ -48,7 +51,7 @@ function pokemonInfo(i) {
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
     pokemonId = allPokemon[i]['id'];
-   
+
     pokemonTypeColor();
 
     pokemonInfoContent.innerHTML = renderPokemonInfo(i);
@@ -64,13 +67,23 @@ function aboutPokemon(i) {
     let height = allPokemon[i]['height'] / 10;
     let weight = allPokemon[i]['weight'] / 10;
     let baseXp = allPokemon[i]['base_experience'];
+    let abilities = pokemonAbilities(i);
 
-    let abilityAmount  = allPokemon[i]['abilities'].length;
+    aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, abilities);
+}
+
+
+function pokemonAbilities(i) {
+    let abilityAmount = allPokemon[i]['abilities'].length;
+    let abilities = '';
+
     for (let j = 0; j < abilityAmount; j++) {
-        const ability = allPokemon[i]['abilities'][j]['ability']['name'];
-        aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, ability);
+        abilities += allPokemon[i]['abilities'][j]['ability']['name'];
+        if (j < abilityAmount - 1) {
+            abilities += ',';
+        }
     }
-
+    return abilities;
 }
 
 
@@ -86,7 +99,7 @@ function pokemonStats(i) {
     let speed = allPokemon[i]['stats'][5]['base_stat'];
 
     pokemonStats.innerHTML = renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed);
-} 
+}
 
 
 function pokemonMoves(i) {
@@ -107,7 +120,7 @@ function getToAboutPokemon(i) {
     document.getElementById('pokemon-stats').classList.add('d-none');
     document.getElementById('pokemon-moves').classList.add('d-none');
 
-    aboutPokemon(i);    
+    aboutPokemon(i);
 }
 
 
@@ -164,25 +177,10 @@ function keyControl(i) {
 }
 
 
-function search() {
-    let search = document.getElementById('search').value;
-    search = search.toLowerCase();
-    let content = document.getElementById('main-container');
-    content.innerHTML = '';
-
-    for (let i = 0; i < allPokemon.length; i++) {
-        pokemonName = allPokemon[i]['name'];
-        pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
-        pokemonId = allPokemon[i]['id'];
-        pokemonType = allPokemon[i]['types'][0]['type']['name'];
-        pokemonColor = pokemonTypeColor();
-
-        if (pokemonName.toLowerCase().includes(search)) {
-            content.innerHTML += renderShowAllPokemon(i, pokemonName, pokemonImage, pokemonId, pokemonType, pokemonColor);
+window.addEventListener('scroll', function() {
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
+        if (!loadMorePokemon) {
+            loadPokemon();
         }
     }
-    
-    if (search == '') {
-        showAllPokemon();
-    }
-}
+})
