@@ -171,11 +171,27 @@ function keyControl(i) {
         if (e.key === 'Escape') {
             closeFunction();
         }
-        if (e.key === 'ArrowLeft') pokemonInfo(i - 1), resetDisplay();
-        if (e.key === 'ArrowRight') pokemonInfo(i + 1), resetDisplay()
-        if (pokemonAmount == 49) {
+        if (e.key === 'ArrowLeft')  pokemonInfo(i - 1), resetDisplay();
+        if (e.key === 'ArrowRight') pokemonInfo(i + 1), resetDisplay();
+        if (!loadMorePokemon) {
             loadPokemon();
         }
+    }
+}
+
+
+async function prevPokemon(i) {
+    await pokemonInfo(i - 1);
+    resetDisplay();
+}
+
+
+async function nextPokemon(i) {
+    pokemonInfo(i + 1);
+    resetDisplay();
+
+    if (!loadMorePokemon) {
+        await loadPokemon();
     }
 }
 

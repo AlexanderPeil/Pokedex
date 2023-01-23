@@ -32,9 +32,9 @@ function renderPokemonInfo(i) {
              </div>
           </div>
            <div class="mt-5">
-              <!-- <img id="prev" class="arrow-img" src="./img/prev.png" onclick="prevPokemon(i)"> -->
-              <img class="pokemon-img" src="${pokemonImage}">
-              <!-- <img id="next" class="arrow-img" src="./img/next.png" onclick="nextPokemon(i)"> -->
+              <img id="prev" class="arrow-img" src="./img/prev.png" onclick="prevPokemon(${i})">
+              <img class="pokemon-img ms-4 me-4" src="${pokemonImage}">
+              <img id="next" class="arrow-img" src="./img/next.png" onclick="nextPokemon(${i})">
          </div>
       </div>
     </div>
@@ -104,8 +104,20 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
 }
 
 
-function renderPokemonMoves(moves) {
+function renderAllPokemonMoves(moves) {
+    return `
+    <div class="pokemon-moves">${moves}</div>
+    `;
+}
+
+
+function renderPokemonMoves(i, moves) {
     return /*html*/ `
-        <div class="pokemon-moves">${moves}</div>
+    <ul>
+        <li onclick="getToAboutPokemon(${i})">About</li>
+        <li onclick="getToPokemonStats(${i})">Stats</li>
+        <li onclick="getToPokemonMoves(${i})">Moves</li>
+    </ul>
+    renderAllPokemonMoves(moves);
     `;
 }

@@ -83,7 +83,7 @@ nav {
     width: 150px;
 }
 
-/* .pokemon-img-cont {
+.pokemon-img-cont {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -99,7 +99,7 @@ nav {
     cursor: pointer;
     background-color: lightgrey;
     transition: all 125ms ease-in-out;
-} */
+}
 
 .pokemon-type {
     display: flex;
