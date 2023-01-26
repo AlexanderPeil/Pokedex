@@ -104,20 +104,8 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
 }
 
 
-function renderAllPokemonMoves(moves) {
-    return `
-    <div class="pokemon-moves">${moves}</div>
-    `;
-}
-
-
-function renderPokemonMoves(i, moves) {
+function renderPokemonMoves(moves) {
     return /*html*/ `
-    <ul>
-        <li onclick="getToAboutPokemon(${i})">About</li>
-        <li onclick="getToPokemonStats(${i})">Stats</li>
-        <li onclick="getToPokemonMoves(${i})">Moves</li>
-    </ul>
-    renderAllPokemonMoves(moves);
+        <div class="pokemon-moves">${moves}</div>
     `;
 }

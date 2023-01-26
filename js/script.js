@@ -46,17 +46,22 @@ function pokemonInfo(i) {
     document.body.classList.add('hidden');
     document.getElementById('bg-dark').classList.remove('d-none');
 
+    fetchPokemonInfos(i);
+    pokemonTypeColor();
 
+    pokemonInfoContent.innerHTML = renderPokemonInfo(i);
+
+    hidePrevButton(i);
+    aboutPokemon(i);
+    keyControl(i);
+}
+
+
+function fetchPokemonInfos(i) {
     pokemonName = allPokemon[i]['name'];
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
     pokemonId = allPokemon[i]['id'];
-
-    pokemonTypeColor();
-
-    pokemonInfoContent.innerHTML = renderPokemonInfo(i);
-    aboutPokemon(i);
-    keyControl(i);
 }
 
 
@@ -108,10 +113,23 @@ function pokemonMoves(i) {
 
     let movesAmount = allPokemon[i]['moves'].length;
 
+    pokemonMoves.innerHTML = showButtonsInnerHtml(i);
+
     for (let j = 0; j < movesAmount; j++) {
         const moves = allPokemon[i]['moves'][j]['move']['name'];
         pokemonMoves.innerHTML += renderPokemonMoves(moves);
     } 
+}
+
+
+function showButtonsInnerHtml(i) {
+    return `
+    <ul>
+         <li onclick="getToAboutPokemon(${i})">About</li>
+        <li onclick="getToPokemonStats(${i})">Stats</li>
+        <li onclick="getToPokemonMoves(${i})">Moves</li>
+    </ul>
+`;
 }
 
 
@@ -180,18 +198,26 @@ function keyControl(i) {
 }
 
 
-async function prevPokemon(i) {
-    await pokemonInfo(i - 1);
+function hidePrevButton(i) {
+    let prevPokemon = document.getElementById('prev');
+    if (i == 0) {
+        prevPokemon.classList.add('d-none');
+    }
+}
+
+
+function prevPokemon(i) {
+    pokemonInfo(i - 1);
     resetDisplay();
 }
 
 
-async function nextPokemon(i) {
+function nextPokemon(i) {
     pokemonInfo(i + 1);
     resetDisplay();
 
     if (!loadMorePokemon) {
-        await loadPokemon();
+         loadPokemon();
     }
 }
 
