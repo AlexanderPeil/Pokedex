@@ -4,11 +4,12 @@ function search() {
     let content = document.getElementById('main-container');
     content.innerHTML = '';
 
-    searchForResults();
+    getSearchResults(search, content);
+    clearSearchInput();
 }
 
 
-function searchForResults() {
+function getSearchResults(search, content) {
     for (let i = 0; i < allPokemon.length; i++) {
         pokemonName = allPokemon[i]['name'];
         pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
@@ -23,7 +24,7 @@ function searchForResults() {
 }
 
 
-function clearSearch() {
+function clearSearchInput() {
     if (search == '') {
         showAllPokemon();
     }
