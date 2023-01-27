@@ -6,10 +6,10 @@ let pokemonType;
 let pokemonId;
 let pokemonColor;
 let loadMorePokemon = false;
-let pokemonAmount = 49;
+let pokemonAmount = 25;
 let startPokemon = 1;
 
-
+// I have an addEventListener at the bottom of this code. When you scroll the Pokedex page at the bottom then 48 Pokemons more will be loaded.
 async function loadPokemon() {
     for (let i = startPokemon; i < pokemonAmount; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
@@ -18,11 +18,11 @@ async function loadPokemon() {
         allPokemon.push(currentPokemon);
     }
     showAllPokemon();
-    startPokemon += 48;
-    pokemonAmount += 48;
+    startPokemon += 24;
+    pokemonAmount += 24;
 }
 
-
+// I use an if else condition for the Pokemon color. It's in a separate JS file called pokemon-color.js
 function showAllPokemon() {
     let container = document.getElementById('main-container');
     container.innerHTML = '';
@@ -39,11 +39,10 @@ function showAllPokemon() {
     }
 }
 
-
+// This is the function for every single Pokemon, when you click on a pokemon card to see the infos about it.
 function pokemonInfo(i) {
     document.getElementById('pokemon-info-container').classList.remove('d-none');
     let pokemonInfoContent = document.getElementById('pokemon-info-head');
-    document.body.classList.add('hidden');
     document.getElementById('bg-dark').classList.remove('d-none');
 
     fetchPokemonInfos(i);
@@ -56,7 +55,7 @@ function pokemonInfo(i) {
     keyControl(i);
 }
 
-
+// I outsourced this function out of the function pokemonInfo(). It fetches the infos about the Pokemons (name, type, image and id).
 function fetchPokemonInfos(i) {
     pokemonName = allPokemon[i]['name'];
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
@@ -64,7 +63,7 @@ function fetchPokemonInfos(i) {
     pokemonId = allPokemon[i]['id'];
 }
 
-
+// This is the first info window (called "About") about the Pokemons. It contains the height, weight, base-experience and the abilities of the Pokemons.
 function aboutPokemon(i) {
     let aboutPokemon = document.getElementById('about-pokemon');
     aboutPokemon.classList.remove('d-none');
@@ -77,7 +76,7 @@ function aboutPokemon(i) {
     aboutPokemon.innerHTML = renderAboutPokemon(i, height, weight, baseXp, abilities);
 }
 
-
+// For the last Pokemon info (called "Abilities") in the window "About" I use this function with a for loop to show the abilities of the Pokemons. 
 function pokemonAbilities(i) {
     let abilityAmount = allPokemon[i]['abilities'].length;
     let abilities = '';
@@ -91,7 +90,7 @@ function pokemonAbilities(i) {
     return abilities;
 }
 
-
+// This is the second info window (called "Stats") about the Pokemons. It contains HP, attack, defense, special-attack, special-defense and the speed of the Pokemon.
 function pokemonStats(i) {
     let pokemonStats = document.getElementById('pokemon-stats');
     pokemonStats.classList.remove('d-none');
@@ -106,7 +105,7 @@ function pokemonStats(i) {
     pokemonStats.innerHTML = renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed);
 }
 
-
+// And finally this is the third info window (called "Moves") about the Pokemons.
 function pokemonMoves(i) {
     let pokemonMoves = document.getElementById('pokemon-moves');
     pokemonMoves.classList.remove('d-none');
@@ -118,10 +117,10 @@ function pokemonMoves(i) {
     for (let j = 0; j < movesAmount; j++) {
         const moves = allPokemon[i]['moves'][j]['move']['name'];
         pokemonMoves.innerHTML += renderPokemonMoves(moves);
-    } 
+    }
 }
 
-
+// This is the bar with the buttons "About", "Stats" and "Moves" in the last info window "Moves"
 function showButtonsInnerHtml(i) {
     return `
     <ul>
@@ -133,7 +132,7 @@ function showButtonsInnerHtml(i) {
 }
 
 
-
+// Click on the button "About" to get to this info window of the Pokemon.
 function getToAboutPokemon(i) {
     document.getElementById('pokemon-stats').classList.add('d-none');
     document.getElementById('pokemon-moves').classList.add('d-none');
@@ -141,7 +140,7 @@ function getToAboutPokemon(i) {
     aboutPokemon(i);
 }
 
-
+// Click on the button "Stats" to get to this info window of the Pokemon.
 function getToPokemonStats(i) {
     document.getElementById('about-pokemon').classList.add('d-none');
     document.getElementById('pokemon-moves').classList.add('d-none');
@@ -149,7 +148,7 @@ function getToPokemonStats(i) {
     pokemonStats(i);
 }
 
-
+// Click on the button "Moves" to get to this info window of the Pokemon.
 function getToPokemonMoves(i) {
     document.getElementById('pokemon-stats').classList.add('d-none');
     document.getElementById('about-pokemon').classList.add('d-none');
@@ -157,7 +156,7 @@ function getToPokemonMoves(i) {
     pokemonMoves(i);
 }
 
-// Help function for Closing the pokemon info container. I use this one in two other functions down here.
+// Help function for Closing the Pokemon info container. I use this one in two other functions down here.
 function closeFunction() {
     document.getElementById('pokemon-info-container').classList.add('d-none');
     document.getElementById('about-pokemon').classList.add('d-none');
@@ -167,37 +166,39 @@ function closeFunction() {
     document.getElementById('bg-dark').classList.add('d-none');
 }
 
-
+// Close the info card about the Pokemon.
 function closePokemonInfo() {
     closeFunction();
 }
 
-
+// You can also click outside the Pokemon card to close it. But I added this function for the info card itself. So I prevend that the info card doesn't close if you click inside it.
 function dontClose(event) {
     event.stopPropagation();
 }
 
-
+// This function delets the previous infos about the Pokemon if you click bewteen the Pokemon cards. 
 function resetDisplay() {
     document.getElementById('pokemon-stats').classList.add('d-none');
     document.getElementById('pokemon-moves').classList.add('d-none');
 }
 
-
-function keyControl(i) {
+// You can switch between the Pokemon cards with the keyboard buttons <- and -> . Also you can close the Pokemon card with the Esc button.
+ function keyControl(i) {
     document.onkeydown = (e) => {
         if (e.key === 'Escape') {
             closeFunction();
         }
-        if (e.key === 'ArrowLeft')  pokemonInfo(i - 1), resetDisplay();
+        if (e.key === 'ArrowLeft') pokemonInfo(i - 1), resetDisplay();
         if (e.key === 'ArrowRight') pokemonInfo(i + 1), resetDisplay();
-        if (!loadMorePokemon) {
-            loadPokemon();
-        }
+    }
+    if (i == allPokemon.length - 1) {
+        loadPokemon();
+        pokemonInfo(i + 1);
+        resetDisplay();
     }
 }
 
-
+// This function hides the previous button of the first Pokemon.
 function hidePrevButton(i) {
     let prevPokemon = document.getElementById('prev');
     if (i == 0) {
@@ -205,24 +206,26 @@ function hidePrevButton(i) {
     }
 }
 
-
+// Click on the previous button in the Pokemon card to switch to the previous Pokemon.
 function prevPokemon(i) {
     pokemonInfo(i - 1);
     resetDisplay();
 }
 
-
-function nextPokemon(i) {
-    pokemonInfo(i + 1);
-    resetDisplay();
-
-    if (!loadMorePokemon) {
-         loadPokemon();
+// Click on the next button in the Pokemon card to switch to the next Pokemon.
+ function nextPokemon(i) {
+    if (i == allPokemon.length - 1) {
+        loadPokemon();
+        pokemonInfo(i + 1);
+        resetDisplay();
+    } else {
+        pokemonInfo(i + 1);
+        resetDisplay();
     }
 }
 
-
-window.addEventListener('scroll', function() {
+// This addEventListener loads the next 48 Pokemons if you scroll to the buttom of the Pokedex page.
+window.addEventListener('scroll', function () {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         if (!loadMorePokemon) {
             loadPokemon();
