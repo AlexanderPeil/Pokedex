@@ -3,6 +3,7 @@ let currentPokemon;
 let pokemonName;
 let pokemonImage;
 let pokemonType;
+let pokemonTypeTwo;
 let pokemonId;
 let pokemonColor;
 let loadMorePokemon = false;
@@ -58,9 +59,15 @@ function pokemonInfo(i) {
 // I outsourced this function out of the function pokemonInfo(). It fetches the infos about the Pokemons (name, type, image and id).
 function fetchPokemonInfos(i) {
     pokemonName = allPokemon[i]['name'];
-    pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
     pokemonId = allPokemon[i]['id'];
+    pokemonType = allPokemon[i]['types'][0]['type']['name'];
+    pokemonTypeTwo = '';
+
+    let types = allPokemon[i]['types'];
+    if (types.length > 1) {
+        pokemonTypeTwo = allPokemon[i]['types'][1]['type']['name'];
+    }
 }
 
 // This is the first info window (called "About") about the Pokemons. It contains the height, weight, base-experience and the abilities of the Pokemons.
@@ -183,7 +190,7 @@ function resetDisplay() {
 }
 
 // You can switch between the Pokemon cards with the keyboard buttons <- and -> . Also you can close the Pokemon card with the Esc button.
- function keyControl(i) {
+function keyControl(i) {
     document.onkeydown = (e) => {
         if (e.key === 'Escape') {
             closeFunction();
@@ -213,7 +220,7 @@ function prevPokemon(i) {
 }
 
 // Click on the next button in the Pokemon card to switch to the next Pokemon.
- function nextPokemon(i) {
+function nextPokemon(i) {
     if (i == allPokemon.length - 1) {
         loadPokemon();
         pokemonInfo(i + 1);

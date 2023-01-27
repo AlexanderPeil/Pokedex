@@ -105,12 +105,13 @@ nav {
     display: flex;
     align-items: center;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    width: fit-content;
 }
 
 .pokemon-type span {
     padding: 1px 10px 2px 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: fit-content;
 }
 
 .d-none {

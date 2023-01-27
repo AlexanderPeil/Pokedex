@@ -28,7 +28,12 @@ function renderPokemonInfo(i) {
                   <h2>${pokemonName}</h2>   
              </div>
               <div class="pokemon-type fst-italic"> 
-                <span class="pokemon-font-size">${pokemonType}</span>
+                <!-- <div> -->
+                    <span class="pokemon-font-size me-2">${pokemonType}</span>
+                <!-- </div> -->
+                <!-- <div> -->
+                    <span id="pokemon-type-two" class="pokemon-font-size ms-2">${pokemonTypeTwo}</span>
+                <!-- </div> -->
              </div>
           </div>
            <div class="mt-5">
