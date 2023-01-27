@@ -10,6 +10,7 @@ function renderShowAllPokemon(i) {
          </div>
          <div class="pokemon-type mt-3">
             <span class="pokemon-font-size fst-italic">${pokemonType}</span>
+            <span class="pokemon-font-size fst-italic">${pokemonTypeTwo}</span>
          </div>
     </div>
     `;

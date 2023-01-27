@@ -30,14 +30,21 @@ function showAllPokemon() {
     for (let i = 0; i < allPokemon.length; i++) {
         const pokemon = allPokemon[i];
 
-        pokemonName = pokemon['name'];
-        pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
-        pokemonType = pokemon['types'][0]['type']['name'];
-        pokemonId = pokemon['id'];
-        pokemonTypeColor(pokemonColor);
-
-        container.innerHTML += renderShowAllPokemon(i);
+        infosToShowAllPokemons(i, pokemon, container);
     }
+}
+
+
+function infosToShowAllPokemons(i, pokemon, container) {
+    pokemonName = pokemon['name'];
+    pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
+    pokemonType = pokemon['types'][0]['type']['name'];
+    pokemonTypeTwo = '';
+    checkPokemonTypetwo(i);
+    pokemonId = pokemon['id'];
+    pokemonTypeColor(pokemonColor);
+
+    container.innerHTML += renderShowAllPokemon(i);
 }
 
 // This is the function for every single Pokemon, when you click on a pokemon card to see the infos about it.
@@ -64,6 +71,11 @@ function fetchPokemonInfos(i) {
     pokemonType = allPokemon[i]['types'][0]['type']['name'];
     pokemonTypeTwo = '';
 
+    checkPokemonTypetwo(i);
+}
+
+
+function checkPokemonTypetwo(i) {
     let types = allPokemon[i]['types'];
     if (types.length > 1) {
         pokemonTypeTwo = allPokemon[i]['types'][1]['type']['name'];
