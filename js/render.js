@@ -8,9 +8,8 @@ function renderShowAllPokemon(i) {
          <div>
              <img id="pokemon-img" class="pokemon-img mt-1" src="${pokemonImage}">
          </div>
-         <div class="pokemon-type mt-3">
-            <span class="pokemon-font-size fst-italic">${pokemonType}</span>
-            <span class="pokemon-font-size fst-italic">${pokemonTypeTwo}</span>
+         <div id="pokemon-type" class="pokemon-type mt-3">
+            <span class="pokemon-font-size me-2 fst-italic">${pokemonType}</span>
          </div>
     </div>
     `;
@@ -28,13 +27,8 @@ function renderPokemonInfo(i) {
                  <h2 class="me-3">#${pokemonId}</h2>
                   <h2>${pokemonName}</h2>   
              </div>
-              <div class="pokemon-type fst-italic"> 
-                <!-- <div> -->
+              <div id="info-pokemon-type" class="pokemon-type fst-italic"> 
                     <span class="pokemon-font-size me-2">${pokemonType}</span>
-                <!-- </div> -->
-                <!-- <div> -->
-                    <span id="pokemon-type-two" class="pokemon-font-size ms-2">${pokemonTypeTwo}</span>
-                <!-- </div> -->
              </div>
           </div>
            <div class="mt-5">
@@ -56,19 +50,19 @@ function renderAboutPokemon(i, height, weight, baseXp, ability) {
         <li onclick="getToPokemonMoves(${i})">Moves</li>
     </ul>
     <div class="d-flex justify-content-between mb-1">
-        <span>Height</span>
+        <span style="font-weight: bold";>Height</span>
         <span>${height} m</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Weight</span>
+        <span style="font-weight: bold";>Weight</span>
         <span>${weight} kg</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Base XP</span>
+        <span style="font-weight: bold";>Base XP</span>
         <span>${baseXp} xp;</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Abilities</span>
+        <span style="font-weight: bold";>Abilities</span>
         <span>${ability}</span>
     </div>
     `;
@@ -83,27 +77,27 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
         <li onclick="getToPokemonMoves(${i})">Moves</li>
     </ul>
     <div class="d-flex justify-content-between mb-1">
-        <span>HP</span>
+        <span style="font-weight: bold";>HP</span>
         <span>${hp}</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Attack</span>
+        <span style="font-weight: bold";>Attack</span>
         <span>${attack}</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Defense</span>
+        <span style="font-weight: bold";>Defense</span>
         <span>${defense}</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Special-Attack</span>
+        <span style="font-weight: bold";>Special-Attack</span>
         <span>${specialAttack}</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Special-Defense</span>
+        <span style="font-weight: bold";>Special-Defense</span>
         <span>${specialDefense}</span>
     </div>
     <div class="d-flex justify-content-between mb-1">
-        <span>Speed</span>
+        <span style="font-weight: bold";>Speed</span>
         <span>${speed}</span>
     </div>
     `;
@@ -113,5 +107,12 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
 function renderPokemonMoves(moves) {
     return /*html*/ `
         <div class="pokemon-moves">${moves}</div>
+    `;
+}
+
+
+function renderAllPokemonTypeTwo(i, pokemonTypeTwo) {
+    return /*html*/ `
+        <span class="pokemon-font-size ms-2 fst-italic">${pokemonTypeTwo}</span>
     `;
 }
