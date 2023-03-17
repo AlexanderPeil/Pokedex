@@ -1,3 +1,8 @@
+/**
+ * Renders the pokemons to teh HTML Content. 
+ * @param {number} i - Representing the position of the Pokemon object in the allPokemon array.
+ * @returns It returns an HTML string that represents a card-style display of a Pokemon's name, ID, image, and type.
+ */
 function renderShowAllPokemon(i) {
     return /*html*/ `
     <div id="pokedex-card" style="background-color: ${pokemonColor};" onclick="pokemonInfo(${i})">
@@ -16,6 +21,11 @@ function renderShowAllPokemon(i) {
 }
 
 
+/**
+ * Renders pokemon info by Clicking on the card. 
+ * @param {number} i - Representing the position of the Pokemon object in the allPokemon array.
+ * @returns HTML content. 
+ */
 function renderPokemonInfo(i) {
     return /*html*/ `
     <div id="info-container" style="background-color: ${pokemonTypeColor()};">
@@ -42,6 +52,15 @@ function renderPokemonInfo(i) {
 }
 
 
+/**
+ * Renders informations about pokemon by Clicking on the button "about" on the pokemon card.
+ * @param {number} i - Representing the position of the Pokemon object in the allPokemon array.
+ * @param {object} height - Fetches the height value of the pokemon from API.
+ * @param {object} weight  - Fetches the weight value of the pokemon from API.
+ * @param {object} baseXp  - Fetches the baseXP value of the pokemon from API.
+ * @param {object} ability  - Fetches the ability value of the pokemon from API.
+ * @returns HTML content. 
+ */
 function renderAboutPokemon(i, height, weight, baseXp, ability) {
     return /*html*/ `
     <ul>
@@ -69,6 +88,17 @@ function renderAboutPokemon(i, height, weight, baseXp, ability) {
 }
 
 
+/**
+ * Renders informations about pokemon-stats by Clicking on the button "pokemon-stats" on the pokemon card.
+ * @param {number} i - Representing the position of the Pokemon object in the allPokemon array. 
+ * @param {object} hp - Fetches the hp value of the pokemon from API.
+ * @param {object} attack - Fetches the attack value of the pokemon from API.
+ * @param {object} defense  - Fetches the defense value of the pokemon from API.
+ * @param {object} specialAttack  - Fetches the specialAttack value of the pokemon from API.
+ * @param {object} specialDefense  - Fetches the specialDefense value of the pokemon from API.
+ * @param {object} speed  - Fetches the speed value of the pokemon from API.
+ * @returns HTML content.
+ */
 function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefense, speed) {
     return /*html*/ `
     <ul>
@@ -104,6 +134,11 @@ function renderPokemonStats(i, hp, attack, defense, specialAttack, specialDefens
 }
 
 
+/**
+ * Renders informations about pokemon-moves by Clicking on the button "moves" on the pokemon card.
+ * @param {object} moves - Fetches the moves value of the pokemon from API.
+ * @returns HTML content.
+ */
 function renderPokemonMoves(moves) {
     return /*html*/ `
         <div class="pokemon-moves">${moves}</div>
@@ -111,6 +146,12 @@ function renderPokemonMoves(moves) {
 }
 
 
+/**
+ * Renders the second type of the pokemons. 
+ * @param {number} i - Representing the position of the Pokemon object in the allPokemon array.
+ * @param {object} pokemonTypeTwo - Fetches the information about the second type of the pokemon.
+ * @returns HTML content.
+ */
 function renderAllPokemonTypeTwo(i, pokemonTypeTwo) {
     return /*html*/ `
         <span class="pokemon-font-size ms-2 fst-italic">${pokemonTypeTwo}</span>

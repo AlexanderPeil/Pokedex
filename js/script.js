@@ -10,7 +10,9 @@ let loadMorePokemon = false;
 let pokemonAmount = 25;
 let startPokemon = 1;
 
-// I have an addEventListener at the bottom of this code. When you scroll the Pokedex page at the bottom then 48 Pokemons more will be loaded.
+/**
+ *  Loads Pokemon data from the PokeAPI using the fetch API. 
+ */
 async function loadPokemon() {
     for (let i = startPokemon; i < pokemonAmount; i++) {
         let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
@@ -23,7 +25,9 @@ async function loadPokemon() {
     pokemonAmount += 24;
 }
 
-// I use an if else condition for the Pokemon color. It's in a separate JS file called pokemon-color.js
+/**
+ * I use an if else condition for the Pokemon color. It's in a separate JS file called pokemon-color.js
+ */
 function showAllPokemon() {
     let container = document.getElementById('main-container');
     container.innerHTML = '';
@@ -34,7 +38,12 @@ function showAllPokemon() {
     }
 }
 
-// I outsourced this function to have a better overview.
+/**
+ * Fetches the pokemon informations.
+ * @param {number} i - Index of the current Pokemon in the allPokemon array.
+ * @param {object} pokemon - The current Pokemon object.
+ * @param {HTMLElement} container - here the Pokemon information will be displayed.
+ */
 function infosToShowAllPokemons(i, pokemon, container) {
     pokemonName = pokemon['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
@@ -57,7 +66,12 @@ function infosToShowAllPokemons(i, pokemon, container) {
 //     }
 // }
 
-// This addEventListener loads the next 48 Pokemons if you scroll to the buttom of the Pokedex page.
+
+/**
+ * This function adds an event listener to the window object that listens for a 'scroll' event. 
+ * If the user has scrolled to the bottom of the page and loadMorePokemon is not true, then the loadPokemon() function is called to load more Pokemon data.
+ * The assumption is that the loadPokemon() function will set loadMorePokemon to true once it has loaded more data, so that the listener will not keep firing unnecessarily.
+ */
 window.addEventListener('scroll', function () {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight) {
         if (!loadMorePokemon) {
@@ -66,7 +80,10 @@ window.addEventListener('scroll', function () {
     }
 })
 
-// This search function is for the names of the Pokemons.
+
+/**
+ *  This search function is for the names of the Pokemons.
+ */
 function search() {
     let search = document.getElementById('search').value;
     search = search.toLowerCase();
@@ -77,7 +94,13 @@ function search() {
     clearSearchInput();
 }
 
-// I outsourced this function to have a better overview.
+
+/**
+ * It checks if the lowercase version of the Pokemon name includes the lowercase version of the search string.
+ * If it does, it appends the result of calling the renderShowAllPokemon() function with the appropriate arguments to the innerHTML property of the content element.
+ * @param {string} search - Representing the search term entered by the user
+ * @param {HTMLElement} content - The search results will be displayed here.
+ */
 function getSearchResults(search, content) {
     for (let i = 0; i < allPokemon.length; i++) {
         pokemonName = allPokemon[i]['name'];
@@ -92,7 +115,10 @@ function getSearchResults(search, content) {
     }
 }
 
-// If you reset the search input field the pokedex page will load all Pokemons.
+
+/**
+ * If you reset the search input field the pokedex page will load all Pokemons.
+ */
 function clearSearchInput() {
     if (search == '') {
         showAllPokemon();

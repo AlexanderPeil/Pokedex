@@ -1,3 +1,7 @@
+/**
+ * Find out what the right pokemon color is by checking the pokemontype. 
+ * @returns the pokemon color
+ */
 function pokemonTypeColor() {
     if (pokemonType == 'grass') {
         return pokemonColor = '#9BCC50';

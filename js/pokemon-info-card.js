@@ -1,4 +1,7 @@
-// This is the function for every single Pokemon, when you click on a pokemon card to see the infos about it.
+/**
+ *  Displays information about a specific Pokémon when its corresponding card is clicked.
+ * @param {number} i - The index of the Pokémon in the `allPokemon` array.
+ */
 function pokemonInfo(i) {
     document.getElementById('pokemon-info-container').classList.remove('d-none');
     let pokemonInfoContent = document.getElementById('pokemon-info-head');
