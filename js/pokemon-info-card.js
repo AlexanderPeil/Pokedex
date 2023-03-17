@@ -12,6 +12,15 @@ function pokemonInfo(i) {
 
     pokemonInfoContent.innerHTML = renderPokemonInfo(i);
 
+    callSomeFunctions(i);
+}
+
+
+/**
+ * This functions will be called in the function pokemonInfo() at the end.
+ * @param {*} i - The index of the Pokémon in the `allPokemon` array. 
+ */
+function callSomeFunctions(i) {
     checkPokemonInfoTypeTwo(i);
     hidePrevButton(i);
     aboutPokemon(i);
@@ -19,6 +28,10 @@ function pokemonInfo(i) {
 }
 
 
+/**
+ * Checks if the selected Pokemon has a second type, and if so, renders it in the Pokemon info container.
+ * @param {*} i - The index of the Pokémon in the `allPokemon` array.  
+ */
 function checkPokemonInfoTypeTwo(i) {
     let types = allPokemon[i]['types'];
     let typeTwo = document.getElementById('info-pokemon-type');
@@ -28,7 +41,11 @@ function checkPokemonInfoTypeTwo(i) {
     }
 }
 
-// I outsourced this function out of the function pokemonInfo(). It fetches the infos about the Pokemons (name, type, image and id).
+
+/**
+ * Fetches pokemon infos from the API. This function is called in the script.js in the functuon
+ * @param {*} i - The index of the Pokémon in the `allPokemon` array.   
+ */
 function fetchPokemonInfos(i) {
     pokemonName = allPokemon[i]['name'];
     pokemonImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`;
